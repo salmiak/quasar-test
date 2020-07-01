@@ -10,9 +10,9 @@
  * Boot files are your "main.js"
  **/
 
-import lang from 'quasar/lang/en-us'
+import lang from 'quasar/lang/sv'
 
-import iconSet from 'quasar/icon-set/material-icons'
+import iconSet from 'quasar/icon-set/fontawesome-v5-pro'
 
 
 import Vue from 'vue'

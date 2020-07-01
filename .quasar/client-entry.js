@@ -12,10 +12,6 @@
 
 
 
-import '@quasar/extras/fontawesome-v5/fontawesome-v5.css'
-
-import '@quasar/extras/material-icons/material-icons.css'
-
 
 
 
@@ -33,6 +29,8 @@ import createApp from './app.js'
 
 
 
+
+import qboot_Bootfontawesomepro from 'boot/fontawesome-pro'
 
 
 
@@ -59,6 +57,51 @@ async function start () {
 
   
 
+  
+  let hasRedirected = false
+  const redirect = url => {
+    hasRedirected = true
+    const normalized = Object(url) === url
+      ? router.resolve(url).route.fullPath
+      : url
+
+    window.location.href = normalized
+  }
+
+  const urlPath = window.location.href.replace(window.location.origin, '')
+  const bootFiles = [qboot_Bootfontawesomepro]
+
+  for (let i = 0; hasRedirected === false && i < bootFiles.length; i++) {
+    if (typeof bootFiles[i] !== 'function') {
+      continue
+    }
+
+    try {
+      await bootFiles[i]({
+        app,
+        router,
+        
+        Vue,
+        ssrContext: null,
+        redirect,
+        urlPath,
+        publicPath
+      })
+    }
+    catch (err) {
+      if (err && err.url) {
+        window.location.href = err.url
+        return
+      }
+
+      console.error('[Quasar] boot error:', err)
+      return
+    }
+  }
+
+  if (hasRedirected === true) {
+    return
+  }
   
 
   

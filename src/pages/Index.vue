@@ -16,6 +16,16 @@
       <h6>Heading 6</h6>
       <p class="text-body1">Paragraph of body 1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <p class="text-body2">Paragraph of body 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <hr/>
+      <div class="q-py-md q-gutter-sm">
+        <q-btn color="blue-grey-1" icon="fal fa-duck" text-color="black" label="Standard" />
+        <q-btn color="primary" icon="fal fa-print" label="Primary" />
+        <q-btn color="secondary" icon="fas fa-adjust" label="Secondary" />
+        <q-btn color="blue-grey-8" icon="fal fa-unicorn" outline glossy label="Grey" />
+        <q-btn color="positive" icon="fal fa-thumbs-up" flat label="Good" />
+        <q-btn color="negative" icon="fal fa-trash-alt"  label="Delete" />
+        <q-btn color="dark" label="Black" />
+      </div>
   </q-page>
 </template>
 

@@ -8,16 +8,19 @@
 // Your own variables (that are declared here) and Quasar's own
 // ones will be available out of the box in your .vue/.scss/.sass files
 
+$typography-font-family         : 'Inter', '-apple-system', 'Helvetica Neue', Helvetica, Arial, sans-serif !default
+
+
 $h1:        (size: 2.848rem, line-height: 3rem,     letter-spacing: -.01562em, weight: 300) !default
 $h2:        (size: 2rem,     line-height: 2.5rem,   letter-spacing: -.00833em, weight: 600) !default
 $h3:        (size: 1.414em,  line-height: 2rem,     letter-spacing: normal,    weight: 600) !default
-$h4:        (size: 1.414em,  line-height: 2rem,     letter-spacing: .00735em,  weight: 400) !default
+$h4:        (size: 1.414em,  line-height: 2rem,     letter-spacing: .00735em,  weight: 300) !default
 $h5:        (size: 1rem,     line-height: 1.5rem,   letter-spacing: normal,    weight: 600) !default
-$h6:        (size: 0.875rem, line-height: 1.25rem,  letter-spacing: .0125em,   weight: 600) !default
+$h6:        (size: .875rem,  line-height: 1.25rem,  letter-spacing: .0125em,   weight: 600) !default
 $subtitle1: (size: 1rem,     line-height: 1.75rem,  letter-spacing: .00937em,  weight: 400) !default
 $subtitle2: (size: .875rem,  line-height: 1.375rem, letter-spacing: .00714em,  weight: 500) !default
-$body1:     (size: 1rem,     line-height: 1.5rem,   letter-spacing: .03125em,  weight: 400) !default
-$body2:     (size: .875rem,  line-height: 1.25rem,  letter-spacing: .01786em,  weight: 400) !default
+$body1:     (size: 1rem,     line-height: 1.5rem,   letter-spacing: .03125em,  weight: 500) !default
+$body2:     (size: .875rem,  line-height: 1.25rem,  letter-spacing: .01786em,  weight: 500) !default
 $overline:  (size: .875rem,  line-height: 2rem,     letter-spacing: .06667em,  weight: 600) !default
 $caption:   (size: .875rem,  line-height: 1.25rem,  letter-spacing: .03333em,  weight: 400) !default
 
@@ -52,3 +55,17 @@ $blue-grey-11 : #E5EBEE !default
 $blue-grey-12 : #96A9AD !default
 $blue-grey-13 : #748D93 !default
 $blue-grey-14 : #586C71 !default
+
+
+$shadow-color         : $dark !default
+$shadow-transition    : box-shadow .28s cubic-bezier(.4, 0, .2, 1) !default
+$inset-shadow         : 0 7px 9px -7px rgba($shadow-color, .7) inset !default
+
+$elevation-umbra      : rgba($shadow-color, .2) !default
+$elevation-penumbra   : rgba($shadow-color, .14) !default
+$elevation-ambient    : rgba($shadow-color, .12) !default
+
+$shadow-1  : 0 1px 3px $elevation-umbra, 0 1px 1px $elevation-penumbra, 0 2px 1px -1px $elevation-ambient !default
+
+$button-font-weight             : 600 !default
+$button-shadow                  : $shadow-1 !default

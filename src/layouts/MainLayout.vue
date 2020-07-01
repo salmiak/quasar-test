@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header class="bg-blue-grey-9">
       <q-toolbar>
         <q-btn
           flat
@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Quasar Test App
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -23,12 +23,12 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-blue-grey-4"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
+          class="text-blue-grey-8 text-bold"
         >
           Essential Links
         </q-item-label>

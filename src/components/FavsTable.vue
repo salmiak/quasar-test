@@ -7,10 +7,10 @@
       indicator-color="blue-grey-8"
       align="left"
     >
-      <q-tab name="schools" icon="fal fa-school" label="Skolor" />
-      <q-tab name="classes" icon="fal fa-users-class" label="Klasser" />
-      <q-tab name="groups" icon="fal fa-users" label="Grupper" />
-      <q-tab name="patients" icon="fal fa-user" label="Elever" />
+      <q-tab name="schools" icon="las la-school" label="Skolor" />
+      <q-tab name="classes" icon="las la-users" label="Klasser" />
+      <q-tab name="groups" icon="las la-users" label="Grupper" />
+      <q-tab name="patients" icon="las la-user" label="Elever" />
     </q-tabs>
     <q-separator />
     <q-tab-panels

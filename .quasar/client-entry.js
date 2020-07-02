@@ -12,6 +12,8 @@
 
 
 
+import '@quasar/extras/line-awesome/line-awesome.css'
+
 
 
 

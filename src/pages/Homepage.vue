@@ -12,12 +12,12 @@
         indicator-color="primary"
         align="left"
       >
-        <q-tab name="home" icon="fal fa-home" label="Din sida" />
-        <q-tab name="signbasket" icon="fal fa-inbox" label="Signeringskorg">
+        <q-tab name="home" icon="las la-home" label="Din sida" />
+        <q-tab name="signbasket" icon="las la-inbox" label="Signeringskorg">
           <q-badge color="red" floating>3</q-badge>
         </q-tab>
-        <q-tab name="settings" icon="fal fa-cog" label="Inställningar" />
-        <q-tab name="about" icon="fal fa-info-circle" label="Om Prorenata Journal" />
+        <q-tab name="settings" icon="las la-cog" label="Inställningar" />
+        <q-tab name="about" icon="las la-info-circle" label="Om Prorenata Journal" />
       </q-tabs>
 
       <q-separator />

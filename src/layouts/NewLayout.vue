@@ -2,16 +2,16 @@
   <q-layout view="lHh LpR lff">
     <q-header reveal bordered class="bg-blue-grey-1 text-dark bt-3 bt-primary">
       <q-toolbar>
-        <q-btn v-if="!left" class="q-mr-lg" dense flat round icon="fal fa-bars" @click="left = !left" />
+        <q-btn v-if="!left" class="q-mr-lg" dense flat round icon="las la-bars" @click="left = !left" />
 
         <q-breadcrumbs class="text-blue-grey-9" active-color="blue-grey-6">
-          <q-breadcrumbs-el label="Stora skolan" icon="fal fa-school" />
-          <q-breadcrumbs-el label="1A" icon="fal fa-users-class" />
+          <q-breadcrumbs-el label="Stora skolan" icon="las la-school" />
+          <q-breadcrumbs-el label="1A" icon="las la-users" />
         </q-breadcrumbs>
 
         <q-space />
 
-        <q-btn dense flat round icon="fal fa-bars" @click="right = !right" />
+        <q-btn dense flat round icon="las la-caret-square-left" :class="{'flip-horizontal':right}" @click="right = !right" />
       </q-toolbar>
     </q-header>
 
@@ -35,7 +35,7 @@
         <q-list dark class="bt-3 bt-primary text-blue-grey-4">
           <q-item active clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-home" />
+              <q-icon name="las la-home" />
             </q-item-section>
 
             <q-item-section>
@@ -47,7 +47,7 @@
 
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-folder" />
+              <q-icon name="las la-folder" />
             </q-item-section>
 
             <q-item-section>
@@ -57,7 +57,7 @@
 
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-table" />
+              <q-icon name="las la-table" />
             </q-item-section>
 
             <q-item-section>
@@ -67,7 +67,7 @@
 
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-books" />
+              <q-icon name="las la-book" />
             </q-item-section>
 
             <q-item-section>
@@ -77,7 +77,7 @@
 
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-calendar" />
+              <q-icon name="las la-calendar" />
             </q-item-section>
 
             <q-item-section>
@@ -87,7 +87,7 @@
 
           <q-item clickable v-ripple>
             <q-item-section avatar>
-              <q-icon name="far fa-envelope" />
+              <q-icon name="las la-envelope" />
             </q-item-section>
 
             <q-item-section>

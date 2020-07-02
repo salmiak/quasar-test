@@ -7,9 +7,9 @@
         class="col"
         style="overflow: auto; min-width: 48px; max-width: 48px;"
       >
-        <q-tab name="favs" icon="fal fa-star" />
-        <q-tab name="notes" icon="fal fa-sticky-note" />
-        <q-tab name="help" icon="fal fa-life-ring" />
+        <q-tab name="favs" icon="lar la-star" />
+        <q-tab name="notes" icon="las la-sticky-note" />
+        <q-tab name="help" icon="las la-life-ring" />
       </q-tabs>
 
         <q-tab-panels
@@ -29,7 +29,7 @@
               <q-expansion-item
                 group="favs"
                 expand-separator
-                icon="fal fa-school"
+                icon="las la-school"
                 label="Skolor"
                 caption="4 stycken"
               >
@@ -52,7 +52,7 @@
               <q-expansion-item
                 group="favs"
                 expand-separator
-                icon="fal fa-users-class"
+                icon="las la-users"
                 label="Klasser"
                 caption="4 stycken"
               >
@@ -75,7 +75,7 @@
               <q-expansion-item
                 group="favs"
                 expand-separator
-                icon="fal fa-users"
+                icon="las la-users"
                 label="Grupper"
                 caption="4 stycken"
               >
@@ -98,7 +98,7 @@
               <q-expansion-item
                 group="favs"
                 expand-separator
-                icon="fal fa-user"
+                icon="las la-user"
                 label="Elever"
                 caption="4 stycken"
               >

@@ -64,7 +64,7 @@
       v-model="rightDrawerOpen"
       show-if-above
       bordered
-      :width="320"
+      :width="368"
       :breakpoint="600"
       content-class="bg-blue-grey-3"
     >

@@ -8,7 +8,7 @@
       align="left"
     >
       <q-tab name="schools" icon="fal fa-school" label="Skolor" />
-      <q-tab name="classes" icon="fal fa-users" label="Klasser" />
+      <q-tab name="classes" icon="fal fa-users-class" label="Klasser" />
       <q-tab name="groups" icon="fal fa-users" label="Grupper" />
       <q-tab name="patients" icon="fal fa-user" label="Elever" />
     </q-tabs>

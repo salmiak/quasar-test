@@ -52,7 +52,7 @@
               <q-expansion-item
                 group="favs"
                 expand-separator
-                icon="fal fa-users"
+                icon="fal fa-users-class"
                 label="Klasser"
                 caption="4 stycken"
               >

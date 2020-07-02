@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn v-if="!left" class="q-mr-lg" dense flat round icon="fal fa-bars" @click="left = !left" />
 
-        <q-breadcrumbs>
+        <q-breadcrumbs class="text-blue-grey-9" active-color="blue-grey-6">
           <q-breadcrumbs-el label="Stora skolan" icon="fal fa-school" />
           <q-breadcrumbs-el label="1A" icon="fal fa-users-class" />
         </q-breadcrumbs>
@@ -29,10 +29,10 @@
       :width="230"
       :breakpoint="500"
       bordered
-      content-class="bg-blue-grey-10 text-blue-grey-4"
+      content-class="bg-blue-grey-10"
     >
     <q-scroll-area class="fit">
-        <q-list class="bt-3 bt-primary">
+        <q-list dark class="bt-3 bt-primary text-blue-grey-4">
           <q-item active clickable v-ripple>
             <q-item-section avatar>
               <q-icon name="far fa-home" />

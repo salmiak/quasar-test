@@ -49,9 +49,7 @@
 
           <q-tab-panel name="signbasket">
             <h3>Signeringskorg</h3>
-            <q-card>
-              Här är jornalen
-            </q-card>
+            <journal-entry />
           </q-tab-panel>
 
           <q-tab-panel name="settings">
@@ -80,10 +78,12 @@
 
 <script>
 import FavsTable from 'components/FavsTable.vue'
+import JournalEntry from 'components/JournalEntry.vue'
 export default {
   name: 'HomePage',
   components: {
-    FavsTable
+    FavsTable,
+    JournalEntry
   },
   data () {
     return {

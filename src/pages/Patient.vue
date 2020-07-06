@@ -1,11 +1,11 @@
 <template>
 
-    <q-layout view="lHh LpR lff" container style="height: 100vh;">
-      <q-header bordered class="bg-blue-grey-1 text-dark">
+    <q-layout view="lHh LpR lff" container style="height: calc(100vh - 51px);">
+      <q-header bordered class="bg-blue-grey-2 text-dark">
         <q-tabs
           v-model="tab"
           inline-label
-          class="q-px-lg"
+          class="q-px-lg q-mt-sm"
           indicator-color="primary"
           align="left"
         >
@@ -21,9 +21,9 @@
         side="left"
         behavior="desktop"
 
-        :width="230"
-        bordered
-        content-class="bg-white"
+        :width="320"
+
+        content-class="bg-blue-grey-2"
       >
         <div class="q-px-lg q-py-xl text-center">
           <q-avatar
@@ -34,14 +34,20 @@
             icon="las la-user"
           >
           </q-avatar>
-          <h3>Christoffer Silverkrona-Stahle</h3>
+          <h2>Christoffer Silverkrona-Stahle</h2>
           <h5 class="no-margin text-blue-grey-7">
             <q-icon
               name="fas fa-star"
               class="q-mr-md"
               color="primary"
             />
-            12 121110-0908
+            <span>
+              12 121110-0908
+
+              <q-tooltip>
+                7 år och 3 månader
+              </q-tooltip>
+            </span>
             <q-icon
               name="fas fa-mars"
               class="q-ml-md"
@@ -57,15 +63,24 @@
               expand-separator
               icon="las la-exclamation-triangle"
               label="Blodsmitta"
-              caption="EMI"
               dark
+              dense
               class="bg-negative rounded-borders q-mb-sm"
             >
               <q-card>
                 <q-card-section class="bg-red-1">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  <div v-html="patient.warning"></div>
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.warning"
+                  >
+                    <q-editor
+                      v-model="patient.warning"
+                      autofocus
+                      @keyup.enter.stop
+                      style="max-width: 400px;"
+                    />
+                  </q-popup-edit>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
@@ -74,18 +89,86 @@
               expand-separator
               icon="las la-info-circle"
               label="Kontrollelev vikt"
-              caption="EMI"
               dark
+              dense
               class="bg-info rounded-borders q-mb-sm"
             >
               <q-card>
                 <q-card-section class="bg-blue-1">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
-                  commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
-                  eveniet doloribus ullam aliquid.
+                  <div v-html="patient.warning"></div>
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.warning"
+                  >
+                    <q-editor
+                      v-model="patient.warning"
+                      autofocus
+                      @keyup.enter.stop
+                      style="max-width: 400px;"
+                    />
+                  </q-popup-edit>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
+          </q-list>
+
+          <q-list padding>
+            <q-item-label header>Bevakningar</q-item-label>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section side top>
+                <q-checkbox v-model="patient.tasks.task1.status" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Ryggkontroll</q-item-label>
+                <q-item-label caption v-html="patient.tasks.task1.description"></q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-pen-square">
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.tasks.task1.description"
+                  >
+                    <q-editor
+                      v-model="patient.tasks.task1.description"
+                      autofocus
+                      @keyup.enter.stop
+                      style="max-width: 400px;"
+                    />
+                  </q-popup-edit>
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section side top>
+                <q-checkbox v-model="patient.tasks.task2.status" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>Ring föräldrar</q-item-label>
+                <q-item-label caption v-html="patient.tasks.task2.description"></q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-pen-square">
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.tasks.task2.description"
+                  >
+                    <q-editor
+                      v-model="patient.tasks.task2.description"
+                      autofocus
+                      @keyup.enter.stop
+                      style="max-width: 400px;"
+                    />
+                  </q-popup-edit>
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
           </q-list>
         </div>
       </q-drawer>
@@ -126,7 +209,20 @@ export default {
   data () {
     return {
       tab: 'index',
-      left: true
+      left: true,
+      patient: {
+        warning: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti commodi magni quaerat numquam, dolorum officiis modi facere maiores architecto suscipit iste eveniet doloribus ullam aliquid.',
+        tasks: {
+          task1: {
+            status: false,
+            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
+          },
+          task2: {
+            status: false,
+            description: 'Lorem apsum dolor sit amet, consectetur adipisicing elit...'
+          }
+        }
+      }
     }
   }
 }

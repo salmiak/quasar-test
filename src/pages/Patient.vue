@@ -121,7 +121,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>Ryggkontroll</q-item-label>
+                <q-item-label>{{patient.tasks.task1.category}}</q-item-label>
                 <q-item-label caption v-html="patient.tasks.task1.description"></q-item-label>
               </q-item-section>
 
@@ -131,12 +131,15 @@
                     buttons
                     v-model="patient.tasks.task1.description"
                   >
-                    <q-editor
-                      v-model="patient.tasks.task1.description"
-                      autofocus
-                      @keyup.enter.stop
-                      style="max-width: 400px;"
-                    />
+                    <div class="q-gutter-md">
+                      <q-select v-model="patient.tasks.task1.category" :options="['Möte','Telefonsamtal']" label="'Kategori'" />
+                      <q-editor
+                        v-model="patient.tasks.task1.description"
+                        autofocus
+                        @keyup.enter.stop
+                        style="max-width: 400px;"
+                      />
+                    </div>
                   </q-popup-edit>
                 </q-icon>
               </q-item-section>
@@ -148,7 +151,7 @@
               </q-item-section>
 
               <q-item-section>
-                <q-item-label>Ring föräldrar</q-item-label>
+                <q-item-label>{{patient.tasks.task2.category}}</q-item-label>
                 <q-item-label caption v-html="patient.tasks.task2.description"></q-item-label>
               </q-item-section>
 
@@ -156,14 +159,29 @@
                 <q-icon name="las la-pen-square">
                   <q-popup-edit
                     buttons
-                    v-model="patient.tasks.task2.description"
+                    v-model="patient.tasks.task2"
                   >
-                    <q-editor
-                      v-model="patient.tasks.task2.description"
-                      autofocus
-                      @keyup.enter.stop
-                      style="max-width: 400px;"
-                    />
+                    <div class="q-gutter-sm q-py-sm">
+                      <h4>Bevakning</h4>
+                      <q-input v-model="patient.tasks.task2.title" label="Rubrik" />
+                      <q-select v-model="patient.tasks.task2.category" :options="['Möte','Telefonsamtal']" label="Kategori" />
+                      <q-editor
+                        v-model="patient.tasks.task2.description"
+                        autofocus
+                        @keyup.enter.stop
+                        style="max-width: 400px;"
+                      />
+                      <q-input v-model="patient.tasks.task2.date" mask="date" :rules="['date']" label="Senast datum">
+                        <template v-slot:append>
+                          <q-icon name="las la-calendar" class="cursor-pointer">
+                            <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
+                              <q-date v-model="patient.tasks.task2.date" @input="() => $refs.qDateProxy.hide()" />
+                            </q-popup-proxy>
+                          </q-icon>
+                        </template>
+                      </q-input>
+                      <q-select v-model="patient.tasks.task2.owner" :options="['Alfred Beckman','Caroline Johansson']" label="Ansvarig" />
+                    </div>
                   </q-popup-edit>
                 </q-icon>
               </q-item-section>
@@ -215,10 +233,12 @@ export default {
         tasks: {
           task1: {
             status: false,
+            category: 'Möte',
             description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
           },
           task2: {
             status: false,
+            category: 'Telefonsamtal',
             description: 'Lorem apsum dolor sit amet, consectetur adipisicing elit...'
           }
         }

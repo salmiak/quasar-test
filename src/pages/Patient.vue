@@ -1,16 +1,80 @@
 <template>
-  <q-page>
-    <div class="bg-blue-grey-1">
 
-      <div class="q-px-lg q-py-md">
-        <h2 class="no-margin">Gro Beckman</h2>
-        <p class="no-margin">Meta info</p>
+  <q-page class="row">
+    <div class="bg-blue-grey-1 col" style="max-width: 256px; min-width: 256px;">
+
+      <div class="q-px-lg q-py-xl text-center">
+        <q-avatar
+          size="72px"
+          font-size="48px"
+          color="teal"
+          text-color="white"
+          icon="las la-user"
+        >
+        </q-avatar>
+        <h3>Christoffer Silverkrona-Stahle</h3>
+        <h5 class="no-margin text-blue-grey-7">
+          <q-icon
+            name="fas fa-star"
+            class="q-mr-md"
+            color="primary"
+          />
+          12 121110-0908
+          <q-icon
+            name="fas fa-mars"
+            class="q-ml-md"
+          />
+        </h5>
       </div>
+
+      <q-separator />
+
+      <div class="q-pa-sm">
+        <q-list>
+          <q-expansion-item
+            expand-separator
+            icon="las la-exclamation-triangle"
+            label="Blodsmitta"
+            caption="EMI"
+            dark
+            class="bg-negative rounded-borders q-mb-sm"
+          >
+            <q-card>
+              <q-card-section class="bg-red-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                eveniet doloribus ullam aliquid.
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+
+          <q-expansion-item
+            expand-separator
+            icon="las la-info-circle"
+            label="Kontrollelev vikt"
+            caption="EMI"
+            dark
+            class="bg-info rounded-borders q-mb-sm"
+          >
+            <q-card>
+              <q-card-section class="bg-blue-1">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti
+                commodi magni quaerat ex numquam, dolorum officiis modi facere maiores architecto suscipit iste
+                eveniet doloribus ullam aliquid.
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </q-list>
+      </div>
+
+    </div>
+
+    <div class="col">
 
       <q-tabs
         v-model="tab"
         inline-label
-        class="q-mx-lg"
+        class="q-mx-lg q-mt-md"
         indicator-color="primary"
         align="left"
       >
@@ -21,7 +85,6 @@
       </q-tabs>
 
       <q-separator />
-    </div>
 
       <q-tab-panels
         v-model="tab"
@@ -34,21 +97,27 @@
           Översikt
         </q-tab-panel>
         <q-tab-panel name="hcu1" class="p-pa-lg">
-          HCU 1
+          <journal-entry />
         </q-tab-panel>
         <q-tab-panel name="hcu2" class="p-pa-lg">
-          HCU 2
+          <journal-entry />
         </q-tab-panel>
         <q-tab-panel name="notes" class="p-pa-lg">
           Minnesanteckningar
         </q-tab-panel>
       </q-tab-panels>
+    </div>
   </q-page>
 </template>
 
 <script>
+import JournalEntry from 'components/JournalEntry.vue'
+
 export default {
   name: 'Patient',
+  components: {
+    JournalEntry
+  },
   data () {
     return {
       tab: 'index'

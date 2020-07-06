@@ -31,71 +31,7 @@
       bordered
       content-class="bg-blue-grey-10"
     >
-    <q-scroll-area class="fit">
-        <q-list dark class="bt-3 bt-primary text-blue-grey-4">
-          <q-item active clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-home" />
-            </q-item-section>
-
-            <q-item-section>
-              Hem
-            </q-item-section>
-          </q-item>
-
-          <q-separator />
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-folder" />
-            </q-item-section>
-
-            <q-item-section>
-              Organisation
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-table" />
-            </q-item-section>
-
-            <q-item-section>
-              Listor & Tabeller
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-book" />
-            </q-item-section>
-
-            <q-item-section>
-              Bibliotek
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-calendar" />
-            </q-item-section>
-
-            <q-item-section>
-              Kalender
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-icon name="las la-envelope" />
-            </q-item-section>
-
-            <q-item-section>
-              Meddelanden
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-scroll-area>
+      <navigation-drawer />
     </q-drawer>
 
     <q-drawer
@@ -118,12 +54,14 @@
 
 <script>
 import Sidebar from 'components/Sidebar.vue'
+import NavigationDrawer from 'components/NavigationDrawer.vue'
 
 export default {
   name: 'MainLayout',
 
   components: {
-    Sidebar
+    Sidebar,
+    NavigationDrawer
   },
 
   data () {

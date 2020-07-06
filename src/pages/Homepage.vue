@@ -1,5 +1,5 @@
 <template lang="html">
-  <q-page class="">
+  <q-page>
     <div class="bg-blue-grey-1">
 
     <div class="q-px-lg q-py-md">

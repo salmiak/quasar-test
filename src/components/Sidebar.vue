@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="fit row no-wrap items-start content-stretch">
+  <div class="fit row no-wrap items-start content-stretch bg-blue-grey-4">
 
       <q-tabs
         v-model="tab"

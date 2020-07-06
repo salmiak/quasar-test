@@ -1,5 +1,7 @@
 <template lang="html">
   <q-page class="">
+    <div class="bg-blue-grey-1">
+
     <div class="q-px-lg q-py-md">
       <h2 class="no-margin">Hemsidan</h2>
       <p class="no-margin">Välkommen Alfred Beckman!</p>
@@ -21,11 +23,12 @@
       </q-tabs>
 
       <q-separator />
+    </div>
 
       <q-tab-panels
         v-model="tab"
         animated
-        class="bg-blue-grey-2 window-height q-px-sm"
+        class="bg-blue-grey-2 q-px-sm"
         transition-prev="jump-up"
         transition-next="jump-up"
       >

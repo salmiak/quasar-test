@@ -3,7 +3,7 @@
     <div class="col-3">
       <h4 class="q-mt-none text-right text-blue-grey-7">{{label}}</h4>
     </div>
-    <div class="col-9">
+    <div class="col-7">
       <slot></slot>
     </div>
   </div>

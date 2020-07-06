@@ -1,6 +1,6 @@
 <template>
-  <q-layout view="lHh LpR lff">
-    <q-header reveal bordered class="bg-blue-grey-1 text-dark bt-3 bt-primary">
+  <q-layout view="lHh LpR lff" class="bt-3 bt-primary">
+    <q-header bordered class="bg-blue-grey-1 text-dark">
       <q-toolbar>
         <q-btn v-if="!left" class="q-mr-lg" dense flat round icon="las la-bars" @click="left = !left" />
 
@@ -98,16 +98,20 @@
       </q-scroll-area>
     </q-drawer>
 
-    <q-drawer show-if-above v-model="right" side="right" bordered>
-      <q-scroll-area class="fit">
+    <q-drawer
+      show-if-above
+      v-model="right"
+      side="right"
+      bordered
+      behavior="desktop"
+    >
+      <q-scroll-area class="fit bg-blue-grey-4">
         <sidebar />
       </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
-      <q-page>
-        <router-view />
-      </q-page>
+      <router-view />
     </q-page-container>
   </q-layout>
 </template>

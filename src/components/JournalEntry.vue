@@ -1,6 +1,15 @@
 <template lang="html">
-  <q-card class="q-pa-lg no-shadow border">
-    <h3>Administrativ anteckning</h3>
+  <q-card class="q-pa-md no-shadow border">
+    <h3 class="q-mt-none">Administrativ anteckning</h3>
+
+    <journal-entry-row label="">
+      <q-banner rounded dark class="bg-info">
+        <template v-slot:avatar>
+          <q-icon name="las la-info-circle" color="white" />
+        </template>
+        Tänk på lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </q-banner>
+    </journal-entry-row>
 
     <journal-entry-row label="Anteckningshuvud">
 
@@ -50,6 +59,12 @@
           <q-icon name="fal fa-paperclip" />
         </template>
       </q-file>
+    </journal-entry-row>
+
+    <journal-entry-row label="Signatur">
+      <q-btn flat color="primary" label="Signera anteckning">
+        <q-tooltip>Lås anteckningen genom att signera den</q-tooltip>
+      </q-btn>
     </journal-entry-row>
 
   </q-card>

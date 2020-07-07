@@ -9,11 +9,13 @@
           indicator-color="primary"
           align="left"
         >
-          <q-tab name="issues" icon="las la-book"   label="Ärenden" />
+          <q-tab name="admin"  icon="las la-user-cog" label="Admin" alert="orange" />
+          <q-tab name="issues" icon="las la-book"   label="Ärenden">
+            <q-badge color="red" floating>2</q-badge>
+          </q-tab>
           <q-tab name="hcu1"   icon="las la-folder" label="Medicins Elevhälsa" class="text-blue-9" />
           <q-tab name="hcu2"   icon="las la-folder" label="Allm. Elevhälsa" class="text-orange-9" />
           <q-tab name="notes"  icon="las la-file-alt" label="Minneanteckningar" />
-          <q-tab name="admin"  icon="las la-user-cog" label="Admin" alert="orange" />
         </q-tabs>
       </q-header>
 
@@ -27,18 +29,6 @@
           transition-prev="jump-up"
           transition-next="jump-up"
         >
-          <q-tab-panel name="issues" class="p-pa-lg">
-            Översikt
-          </q-tab-panel>
-          <q-tab-panel name="hcu1" class="p-pa-lg">
-            <journal-entry />
-          </q-tab-panel>
-          <q-tab-panel name="hcu2" class="p-pa-lg">
-            <journal-entry />
-          </q-tab-panel>
-          <q-tab-panel name="notes" class="p-pa-lg">
-            Minnesanteckningar
-          </q-tab-panel>
           <q-tab-panel name="admin" class="p-pa-lg q-gutter-md">
 
             <q-card class="bg-yellow-1">
@@ -149,6 +139,18 @@
             </div>
 
           </q-tab-panel>
+          <q-tab-panel name="issues" class="p-pa-lg">
+            Översikt
+          </q-tab-panel>
+          <q-tab-panel name="hcu1" class="p-pa-lg">
+            <journal-entry />
+          </q-tab-panel>
+          <q-tab-panel name="hcu2" class="p-pa-lg">
+            <journal-entry />
+          </q-tab-panel>
+          <q-tab-panel name="notes" class="p-pa-lg">
+            Minnesanteckningar
+          </q-tab-panel>
         </q-tab-panels>
       </q-page-container>
     </q-layout>
@@ -166,7 +168,7 @@ export default {
   },
   data () {
     return {
-      tab: 'issues',
+      tab: 'admin',
       left: true,
       patient: {
       }

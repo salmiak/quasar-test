@@ -9,335 +9,15 @@
           indicator-color="primary"
           align="left"
         >
-          <q-tab name="index" icon="las la-user" label="Översikt" />
-          <q-tab name="hcu1" icon="las la-folder" label="Medicins Elevhälsa" class="text-blue-9" />
-          <q-tab name="hcu2" icon="las la-folder" label="Allm. Elevhälsa" class="text-orange-9" />
-          <q-tab name="notes" icon="las la-file-alt" label="Minneanteckningar" />
+          <q-tab name="issues" icon="las la-book"   label="Ärenden" />
+          <q-tab name="hcu1"   icon="las la-folder" label="Medicins Elevhälsa" class="text-blue-9" />
+          <q-tab name="hcu2"   icon="las la-folder" label="Allm. Elevhälsa" class="text-orange-9" />
+          <q-tab name="notes"  icon="las la-file-alt" label="Minneanteckningar" />
+          <q-tab name="admin"  icon="las la-user-cog" label="Admin" alert="orange" />
         </q-tabs>
       </q-header>
 
-      <q-drawer
-        v-model="left"
-        side="left"
-        behavior="desktop"
-
-        :width="304"
-
-        content-class="bg-blue-grey-1 q-pb-xl"
-      >
-
-        <div class="q-px-lg q-pt-xl q-pb-lg text-center">
-          <q-avatar
-            size="72px"
-            font-size="48px"
-            color="red-4"
-            text-color="white"
-            icon="las la-user"
-          >
-          </q-avatar>
-          <h2>Alfred Beckman</h2>
-          <h5 class="no-margin text-blue-grey-7">
-            <q-icon
-              name="fas fa-star"
-              class="q-mr-md"
-              color="primary"
-            />
-            <span>
-              12 121110-0908
-
-              <q-tooltip>
-                7 år och 3 månader
-              </q-tooltip>
-            </span>
-            <q-icon
-              name="fas fa-mars"
-              class="q-ml-md"
-            />
-          </h5>
-        </div>
-
-        <q-separator />
-
-        <div class="q-pa-sm text-center">
-          <q-chip>
-            <q-tooltip>
-              2 framtida bokningar
-            </q-tooltip>
-            <q-avatar color="blue" text-color="white" icon="far fa-calendar" />
-            2
-          </q-chip>
-          <q-chip>
-            <q-tooltip>
-              3 ej avklarade bevakningar
-            </q-tooltip>
-            <q-avatar color="orange" text-color="white" icon="far fa-check-square" />
-            3
-          </q-chip>
-          <q-chip>
-            <q-tooltip>
-              2 okopplade anteckningar
-            </q-tooltip>
-            <q-avatar color="brown" text-color="white" icon="far fa-paperclip" />
-            2
-          </q-chip>
-          <q-chip>
-            <q-tooltip>
-              2 pågående ärenden
-            </q-tooltip>
-            <q-avatar color="teal" text-color="white" icon="far fa-book" />
-            2
-          </q-chip>
-        </div>
-
-        <q-separator />
-
-        <div class="q-pa-sm">
-          <q-list>
-            <q-expansion-item
-              expand-separator
-              icon="las la-exclamation-triangle"
-              label="Blodsmitta"
-              dark
-              dense
-              class="bg-negative rounded-borders q-mb-sm"
-            >
-              <q-card>
-                <q-card-section class="bg-red-1">
-                  <div v-html="patient.warning"></div>
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.warning"
-                  >
-                    <q-editor
-                      v-model="patient.warning"
-                      autofocus
-                      @keyup.enter.stop
-                      style="max-width: 400px;"
-                    />
-                  </q-popup-edit>
-                </q-card-section>
-              </q-card>
-            </q-expansion-item>
-
-            <q-expansion-item
-              expand-separator
-              icon="las la-info-circle"
-              label="Kontrollelev vikt"
-              dark
-              dense
-              class="bg-info rounded-borders q-mb-sm"
-            >
-              <q-card>
-                <q-card-section class="bg-blue-1">
-                  <div v-html="patient.warning"></div>
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.warning"
-                  >
-                    <q-editor
-                      v-model="patient.warning"
-                      autofocus
-                      @keyup.enter.stop
-                      style="max-width: 400px;"
-                    />
-                  </q-popup-edit>
-                </q-card-section>
-              </q-card>
-            </q-expansion-item>
-          </q-list>
-        </div>
-
-        <div>
-
-          <q-list padding>
-
-            <!-- Bokningar -->
-
-            <q-item-label header>Bokningar</q-item-label>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section side top>
-                <q-avatar color="blue-1" font-size="0.875rem">15/12</q-avatar>
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>{{patient.tasks.task1.category}}</q-item-label>
-                <q-item-label caption v-html="patient.tasks.task1.description"></q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-pen-square">
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.tasks.task1.description"
-                  >
-                    <div class="q-gutter-md">
-                      <q-select v-model="patient.tasks.task1.category" :options="['Möte','Telefonsamtal']" label="'Kategori'" />
-                      <q-editor
-                        v-model="patient.tasks.task1.description"
-                        autofocus
-                        @keyup.enter.stop
-                        style="max-width: 400px;"
-                      />
-                    </div>
-                  </q-popup-edit>
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-            <!-- Bevakningar -->
-
-            <q-item-label header>Bevakningar</q-item-label>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section side top>
-                <q-checkbox v-model="patient.tasks.task1.status" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>{{patient.tasks.task1.category}}</q-item-label>
-                <q-item-label caption v-html="patient.tasks.task1.description"></q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-pen-square">
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.tasks.task1.description"
-                  >
-                    <div class="q-gutter-md">
-                      <q-select v-model="patient.tasks.task1.category" :options="['Möte','Telefonsamtal']" label="'Kategori'" />
-                      <q-editor
-                        v-model="patient.tasks.task1.description"
-                        autofocus
-                        @keyup.enter.stop
-                        style="max-width: 400px;"
-                      />
-                    </div>
-                  </q-popup-edit>
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section side top>
-                <q-checkbox v-model="patient.tasks.task2.status" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>{{patient.tasks.task2.category}}</q-item-label>
-                <q-item-label caption v-html="patient.tasks.task2.description"></q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-pen-square">
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.tasks.task2"
-                  >
-                    <div class="q-gutter-sm q-py-sm">
-                      <h4>Bevakning</h4>
-                      <q-input v-model="patient.tasks.task2.title" label="Rubrik" />
-                      <q-select v-model="patient.tasks.task2.category" :options="['Möte','Telefonsamtal']" label="Kategori" />
-                      <q-editor
-                        v-model="patient.tasks.task2.description"
-                        autofocus
-                        @keyup.enter.stop
-                        style="max-width: 400px;"
-                      />
-                      <q-input v-model="patient.tasks.task2.date" mask="date" :rules="['date']" label="Senast datum">
-                        <template v-slot:append>
-                          <q-icon name="las la-calendar" class="cursor-pointer">
-                            <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-                              <q-date v-model="patient.tasks.task2.date" @input="() => $refs.qDateProxy.hide()" />
-                            </q-popup-proxy>
-                          </q-icon>
-                        </template>
-                      </q-input>
-                      <q-select v-model="patient.tasks.task2.owner" :options="['Alfred Beckman','Caroline Johansson']" label="Ansvarig" />
-                    </div>
-                  </q-popup-edit>
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section side top>
-                <q-checkbox v-model="patient.tasks.task2.status" />
-              </q-item-section>
-
-              <q-item-section>
-                <q-item-label>{{patient.tasks.task2.category}}</q-item-label>
-                <q-item-label caption v-html="patient.tasks.task2.description"></q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-pen-square">
-                  <q-popup-edit
-                    buttons
-                    v-model="patient.tasks.task2"
-                  >
-                    <div class="q-gutter-sm q-py-sm">
-                      <h4>Bevakning</h4>
-                      <q-input v-model="patient.tasks.task2.title" label="Rubrik" />
-                      <q-select v-model="patient.tasks.task2.category" :options="['Möte','Telefonsamtal']" label="Kategori" />
-                      <q-editor
-                        v-model="patient.tasks.task2.description"
-                        autofocus
-                        @keyup.enter.stop
-                        style="max-width: 400px;"
-                      />
-                      <q-input v-model="patient.tasks.task2.date" mask="date" :rules="['date']" label="Senast datum">
-                        <template v-slot:append>
-                          <q-icon name="las la-calendar" class="cursor-pointer">
-                            <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-                              <q-date v-model="patient.tasks.task2.date" @input="() => $refs.qDateProxy.hide()" />
-                            </q-popup-proxy>
-                          </q-icon>
-                        </template>
-                      </q-input>
-                      <q-select v-model="patient.tasks.task2.owner" :options="['Alfred Beckman','Caroline Johansson']" label="Ansvarig" />
-                    </div>
-                  </q-popup-edit>
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-            <!-- Okopplade anteckningar -->
-
-            <q-item-label header>Okopplade anteckningar</q-item-label>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section>
-                <q-item-label>Ordination</q-item-label>
-                <q-item-label caption>
-                  MPR dos 2
-                </q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-arrow-right">
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-            <q-item tag="label" v-ripple>
-              <q-item-section>
-                <q-item-label>Remiss</q-item-label>
-                <q-item-label caption>
-                  Synundersökning
-                </q-item-label>
-              </q-item-section>
-
-              <q-item-section side>
-                <q-icon name="las la-arrow-right">
-                </q-icon>
-              </q-item-section>
-            </q-item>
-
-          </q-list>
-        </div>
-      </q-drawer>
+      <patient-sidebar />
 
       <q-page-container>
         <q-tab-panels
@@ -347,7 +27,7 @@
           transition-prev="jump-up"
           transition-next="jump-up"
         >
-          <q-tab-panel name="index" class="p-pa-lg">
+          <q-tab-panel name="issues" class="p-pa-lg">
             Översikt
           </q-tab-panel>
           <q-tab-panel name="hcu1" class="p-pa-lg">
@@ -359,6 +39,116 @@
           <q-tab-panel name="notes" class="p-pa-lg">
             Minnesanteckningar
           </q-tab-panel>
+          <q-tab-panel name="admin" class="p-pa-lg q-gutter-md">
+
+            <q-card class="bg-yellow-1">
+              <q-card-section>
+                <h4 class="q-my-none">Potentiella dubbletter</h4>
+              </q-card-section>
+
+              <q-separator inset />
+
+              <q-card-section>
+                <q-list separator>
+                  <q-item clickable v-ripple>
+                    <q-item-section avatar>
+                      <q-icon color="grey-8" name="las la-user-friends" />
+                    </q-item-section>
+
+                    <q-item-section>
+                      <q-item-label overline>Miniskolan</q-item-label>
+                      <q-item-label>Alan Allansson</q-item-label>
+                      <q-item-label caption>20 121212-A121</q-item-label>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <div class="text-grey-8 q-gutter-xs">
+                        <q-btn flat dense round icon="las la-ellipsis-v" />
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple>
+                    <q-item-section avatar>
+                      <q-icon color="grey-8" name="las la-user-friends" />
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label overline>Microskolan</q-item-label>
+                      <q-item-label>Alan Allansson</q-item-label>
+                      <q-item-label caption>20 121212-A121</q-item-label>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <div class="text-grey-8 q-gutter-xs">
+                        <q-btn flat dense round icon="las la-ellipsis-v" />
+                      </div>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-card-section>
+            </q-card>
+
+            <q-card class="bg-blue-grey-0">
+              <q-card-section>
+                <h4 class="q-my-none">Utgående läslänkar</h4>
+              </q-card-section>
+
+              <q-separator inset />
+
+              <q-card-section>
+                <q-list separator>
+                  <q-item clickable v-ripple>
+                    <q-item-section avatar>
+                      <q-icon color="blue-grey-8" name="las la-file-export" />
+                    </q-item-section>
+
+                    <q-item-section>
+                      <q-item-label overline>Miniskolan</q-item-label>
+                      <q-item-label>Alan Allansson</q-item-label>
+                      <q-item-label caption>20 121212-A121</q-item-label>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <q-chip icon="las la-folder" color="blue-grey-6" text-color="white">EMI</q-chip>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <div class="text-grey-8 q-gutter-xs">
+                        <q-btn flat dense round icon="las la-ellipsis-v" />
+                      </div>
+                    </q-item-section>
+                  </q-item>
+
+                  <q-item clickable v-ripple>
+                    <q-item-section avatar>
+                      <q-icon color="blue-grey-8" name="las la-file-export" />
+                    </q-item-section>
+
+                    <q-item-section>
+                      <q-item-label overline>Microskolan</q-item-label>
+                      <q-item-label>Alan Allansson</q-item-label>
+                      <q-item-label caption>20 121212-A121</q-item-label>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <q-chip icon="las la-folder" color="blue-grey-6" text-color="white">EMI</q-chip>
+                    </q-item-section>
+
+                    <q-item-section side>
+                      <div class="text-grey-8 q-gutter-xs">
+                        <q-btn flat dense round icon="las la-ellipsis-v" />
+                      </div>
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </q-card-section>
+            </q-card>
+
+            <div class="q-my-lg">
+
+            </div>
+
+          </q-tab-panel>
         </q-tab-panels>
       </q-page-container>
     </q-layout>
@@ -366,30 +156,19 @@
 
 <script>
 import JournalEntry from 'components/JournalEntry.vue'
+import PatientSidebar from 'components/PatientSidebar.vue'
 
 export default {
   name: 'Patient',
   components: {
-    JournalEntry
+    JournalEntry,
+    PatientSidebar
   },
   data () {
     return {
-      tab: 'index',
+      tab: 'issues',
       left: true,
       patient: {
-        warning: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, eius reprehenderit eos corrupti commodi magni quaerat numquam, dolorum officiis modi facere maiores architecto suscipit iste eveniet doloribus ullam aliquid.',
-        tasks: {
-          task1: {
-            status: false,
-            category: 'Möte',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
-          },
-          task2: {
-            status: false,
-            category: 'Telefonsamtal',
-            description: 'Lorem apsum dolor sit amet, consectetur adipisicing elit...'
-          }
-        }
       }
     }
   }

@@ -21,20 +21,21 @@
         side="left"
         behavior="desktop"
 
-        :width="320"
+        :width="304"
 
-        content-class="bg-blue-grey-2"
+        content-class="bg-blue-grey-1 q-pb-xl"
       >
-        <div class="q-px-lg q-py-xl text-center">
+
+        <div class="q-px-lg q-pt-xl q-pb-lg text-center">
           <q-avatar
             size="72px"
             font-size="48px"
-            color="teal"
+            color="red-4"
             text-color="white"
             icon="las la-user"
           >
           </q-avatar>
-          <h2>Christoffer Silverkrona-Stahle</h2>
+          <h2>Alfred Beckman</h2>
           <h5 class="no-margin text-blue-grey-7">
             <q-icon
               name="fas fa-star"
@@ -53,6 +54,39 @@
               class="q-ml-md"
             />
           </h5>
+        </div>
+
+        <q-separator />
+
+        <div class="q-pa-sm text-center">
+          <q-chip>
+            <q-tooltip>
+              2 framtida bokningar
+            </q-tooltip>
+            <q-avatar color="blue" text-color="white" icon="far fa-calendar" />
+            2
+          </q-chip>
+          <q-chip>
+            <q-tooltip>
+              3 ej avklarade bevakningar
+            </q-tooltip>
+            <q-avatar color="orange" text-color="white" icon="far fa-check-square" />
+            3
+          </q-chip>
+          <q-chip>
+            <q-tooltip>
+              2 okopplade anteckningar
+            </q-tooltip>
+            <q-avatar color="brown" text-color="white" icon="far fa-paperclip" />
+            2
+          </q-chip>
+          <q-chip>
+            <q-tooltip>
+              2 pågående ärenden
+            </q-tooltip>
+            <q-avatar color="teal" text-color="white" icon="far fa-book" />
+            2
+          </q-chip>
         </div>
 
         <q-separator />
@@ -111,8 +145,48 @@
               </q-card>
             </q-expansion-item>
           </q-list>
+        </div>
+
+        <div>
 
           <q-list padding>
+
+            <!-- Bokningar -->
+
+            <q-item-label header>Bokningar</q-item-label>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section side top>
+                <q-avatar color="blue-1" font-size="0.875rem">15/12</q-avatar>
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>{{patient.tasks.task1.category}}</q-item-label>
+                <q-item-label caption v-html="patient.tasks.task1.description"></q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-pen-square">
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.tasks.task1.description"
+                  >
+                    <div class="q-gutter-md">
+                      <q-select v-model="patient.tasks.task1.category" :options="['Möte','Telefonsamtal']" label="'Kategori'" />
+                      <q-editor
+                        v-model="patient.tasks.task1.description"
+                        autofocus
+                        @keyup.enter.stop
+                        style="max-width: 400px;"
+                      />
+                    </div>
+                  </q-popup-edit>
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
+            <!-- Bevakningar -->
+
             <q-item-label header>Bevakningar</q-item-label>
 
             <q-item tag="label" v-ripple>
@@ -183,6 +257,80 @@
                       <q-select v-model="patient.tasks.task2.owner" :options="['Alfred Beckman','Caroline Johansson']" label="Ansvarig" />
                     </div>
                   </q-popup-edit>
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section side top>
+                <q-checkbox v-model="patient.tasks.task2.status" />
+              </q-item-section>
+
+              <q-item-section>
+                <q-item-label>{{patient.tasks.task2.category}}</q-item-label>
+                <q-item-label caption v-html="patient.tasks.task2.description"></q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-pen-square">
+                  <q-popup-edit
+                    buttons
+                    v-model="patient.tasks.task2"
+                  >
+                    <div class="q-gutter-sm q-py-sm">
+                      <h4>Bevakning</h4>
+                      <q-input v-model="patient.tasks.task2.title" label="Rubrik" />
+                      <q-select v-model="patient.tasks.task2.category" :options="['Möte','Telefonsamtal']" label="Kategori" />
+                      <q-editor
+                        v-model="patient.tasks.task2.description"
+                        autofocus
+                        @keyup.enter.stop
+                        style="max-width: 400px;"
+                      />
+                      <q-input v-model="patient.tasks.task2.date" mask="date" :rules="['date']" label="Senast datum">
+                        <template v-slot:append>
+                          <q-icon name="las la-calendar" class="cursor-pointer">
+                            <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
+                              <q-date v-model="patient.tasks.task2.date" @input="() => $refs.qDateProxy.hide()" />
+                            </q-popup-proxy>
+                          </q-icon>
+                        </template>
+                      </q-input>
+                      <q-select v-model="patient.tasks.task2.owner" :options="['Alfred Beckman','Caroline Johansson']" label="Ansvarig" />
+                    </div>
+                  </q-popup-edit>
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
+            <!-- Okopplade anteckningar -->
+
+            <q-item-label header>Okopplade anteckningar</q-item-label>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section>
+                <q-item-label>Ordination</q-item-label>
+                <q-item-label caption>
+                  MPR dos 2
+                </q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-arrow-right">
+                </q-icon>
+              </q-item-section>
+            </q-item>
+
+            <q-item tag="label" v-ripple>
+              <q-item-section>
+                <q-item-label>Remiss</q-item-label>
+                <q-item-label caption>
+                  Synundersökning
+                </q-item-label>
+              </q-item-section>
+
+              <q-item-section side>
+                <q-icon name="las la-arrow-right">
                 </q-icon>
               </q-item-section>
             </q-item>

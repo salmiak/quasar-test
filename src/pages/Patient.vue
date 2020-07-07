@@ -31,7 +31,7 @@
         >
           <q-tab-panel name="admin" class="p-pa-lg q-gutter-md">
 
-            <q-btn-group outline class="bg-blue-grey-1">
+            <div class="q-gutter-xs">
               <q-btn no-caps outline color="blue-grey-8" label="Arkivera" icon="las la-archive" />
               <q-btn no-caps outline color="blue-grey-8" label="Flytta elev" icon="las la-user" />
               <q-btn no-caps outline color="blue-grey-8" label="Skapa läslänk" icon="las la-link" />
@@ -52,12 +52,12 @@
 
                   <q-item clickable v-close-popup @click="onItemClick">
                     <q-item-section>
-                      <q-item-label>Aktivitetsloggar</q-item-label>
+                      <q-item-label>Aktivitetsloggar      </q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>
               </q-btn-dropdown>
-            </q-btn-group>
+            </div>
 
             <q-card class="bg-yellow-1">
               <q-card-section>

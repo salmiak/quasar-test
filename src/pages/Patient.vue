@@ -41,8 +41,8 @@
           <q-tab-panel name="hcu2" class="p-pa-lg">
             <journal-entry />
           </q-tab-panel>
-          <q-tab-panel name="notes" class="p-pa-lg">
-            Minnesanteckningar
+          <q-tab-panel name="notes">
+            <patient-notes />
           </q-tab-panel>
         </q-tab-panels>
       </q-page-container>
@@ -53,13 +53,15 @@
 import JournalEntry from 'components/JournalEntry.vue'
 import PatientSidebar from 'components/PatientSidebar.vue'
 import PatientAdminTab from 'components/PatientAdminTab.vue'
+import PatientNotes from 'components/PatientNotes.vue'
 
 export default {
   name: 'Patient',
   components: {
     JournalEntry,
     PatientSidebar,
-    PatientAdminTab
+    PatientAdminTab,
+    PatientNotes
   },
   data () {
     return {

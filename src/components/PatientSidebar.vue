@@ -13,8 +13,8 @@
       <q-avatar
         size="72px"
         font-size="48px"
-        color="red-4"
-        text-color="white"
+        color="blue-grey-3"
+        text-color="blue-grey-8"
         icon="las la-user"
       >
       </q-avatar>

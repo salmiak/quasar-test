@@ -1,6 +1,15 @@
 <template lang="html">
   <q-card class="q-pa-md ">
     <h3 class="q-mb-lg q-mt-none">Minnesanteckningar</h3>
+
+    <div class="row">
+      <div class="col" style="max-width: 160px; min-width: 160px;">
+
+      </div>
+      <div class="col q-px-sm text-blue-grey-5 text-italic" style="max-width: 40rem;" @click="dbClick()">Dubbelklicka för att skapa en ny anteckning.</div>
+    </div>
+    <q-separator class="q-my-md" />
+
     <div v-for="note in notes" :key="note.date">
       <div class="row" >
         <div class="col" style="max-width: 160px; min-width: 160px;">
@@ -11,7 +20,7 @@
           <q-btn text-color="primary" label="Spara" @click="note.mode = false" />
         </div>
         <div v-else>
-          <div class="col q-px-sm" style="max-width: 40rem;" v-html="note.content || 'Tom anteckning'" @click="dbClick(note)"></div>
+          <div :class="['col','q-px-sm',{'text-blue-grey-5 text-italic' : !note.content}]" style="max-width: 40rem;" v-html="note.content || 'Dubbelklicka för att redigera anteckningen.'" @click="dbClick(note)"></div>
         </div>
       </div>
       <q-separator class="q-my-md" />
@@ -60,7 +69,16 @@ export default {
         clearTimeout(this.timeoutId)
         // double click
         this.timeoutId = null
-        note.mode = true
+
+        if (note) {
+          note.mode = true
+        } else {
+          this.notes.unshift({
+            date: 'Nyss',
+            content: '',
+            mode: true
+          })
+        }
       }
     }
   }
